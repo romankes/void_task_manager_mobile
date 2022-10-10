@@ -9,9 +9,9 @@ export const useStyles = () => {
     () =>
       StyleSheet.create({
         wrapper: {
-          height: '100%',
-
           paddingHorizontal: 16,
+
+          height: '100%',
         },
         header: {
           flexDirection: 'row',

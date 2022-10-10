@@ -1,6 +1,6 @@
 import React, {ReactNode, useState} from 'react';
 
-import {StatusBar, SafeAreaView} from 'react-native';
+import {StatusBar, SafeAreaView, View} from 'react-native';
 
 //app themes
 import {themes, ThemeContext, ThemesName} from '@/themes';
@@ -22,14 +22,13 @@ const ThemeLayoutContent: React.FC<PropTypes> = ({children}) => {
   const {statusBarStyle, pallete} = useTheme();
 
   return (
-    <SafeAreaView
-      style={{flex: 1, backgroundColor: pallete.background.default}}>
+    <View style={{flex: 1, backgroundColor: pallete.background.default}}>
       <StatusBar
         barStyle={statusBarStyle}
         translucent={true}
         backgroundColor={'transparent'}
       />
       {children}
-    </SafeAreaView>
+    </View>
   );
 };

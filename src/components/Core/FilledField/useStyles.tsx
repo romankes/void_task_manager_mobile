@@ -6,9 +6,10 @@ import {StyleSheet} from 'react-native';
 type TArg = {
   color: keyof InputKeys;
   error: any;
+  numberOfLines: number;
 };
 
-export const useStyles = ({color, error}: TArg) => {
+export const useStyles = ({color, error, numberOfLines}: TArg) => {
   const {pallete, fonts} = useTheme();
 
   const styles = useMemo(
@@ -18,7 +19,7 @@ export const useStyles = ({color, error}: TArg) => {
           borderRadius: 8,
           borderWidth: 1,
 
-          minHeight: 48,
+          minHeight: numberOfLines === 1 ? 48 : numberOfLines * 32,
           paddingHorizontal: 8,
 
           flexDirection: 'row',
@@ -34,11 +35,13 @@ export const useStyles = ({color, error}: TArg) => {
 
           flexShrink: 1,
           flexGrow: 1,
+
+          height: '100%',
         },
         rightIcon: {flexShrink: 0, paddingRight: 5},
         leftIcon: {flexShrink: 0, paddingRight: 5},
       }),
-    [pallete, color, error],
+    [pallete, color, error, numberOfLines],
   );
 
   return {

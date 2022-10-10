@@ -3,6 +3,7 @@ import type {Pallete} from './types';
 const pallete: Pallete = {
   background: {
     default: '#FCFAFF',
+    dark: '#171B16',
   },
   text: {
     default: '#171B16',
@@ -10,7 +11,9 @@ const pallete: Pallete = {
     danger: '#D63333',
     action: '#D9BC22',
     link: '#5BA0BF',
+    light: '#FCFAFF',
   },
+
   icon: {
     default: '#171B16',
   },

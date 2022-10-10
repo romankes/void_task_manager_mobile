@@ -2,6 +2,7 @@ import {ColorValue} from 'react-native';
 
 export type Background = {
   default: ColorValue;
+  dark: ColorValue;
 };
 
 export type Icon = {
@@ -13,6 +14,7 @@ export type Text = {
   gray: ColorValue;
   link: ColorValue;
   action: ColorValue;
+  light: ColorValue;
 };
 
 type Border = {

@@ -51,6 +51,7 @@ export const SignInScreen: FC<TProps> = ({navigation}) => {
             onBlur={onBlur}
             error={error?.message}
             keyboardType="email-address"
+            autoCapitalize="none"
           />
         )}
       />
@@ -71,7 +72,7 @@ export const SignInScreen: FC<TProps> = ({navigation}) => {
       />
       <TouchableOpacity
         activeOpacity={0.6}
-        onPress={() => navigation.navigate(Routes.SIGN_UP)}>
+        onPress={() => navigation.navigate(Routes.FORGOT_PASSWORD)}>
         <Text color="link">{t('sign_in.forgot_password')}</Text>
       </TouchableOpacity>
     </AuthLayout>

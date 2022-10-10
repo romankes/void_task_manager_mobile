@@ -1,17 +1,32 @@
 {
+  "tabs": {
+    "project": "Проектки",
+    "task": "Задачі",
+    "user": "Профіль"
+  },
   "buttons": {
     "sign_in": "Увійти",
-    "sign_up": "Зареєструватись"
+    "sign_up": "Зареєструватись",
+    "create": "Створити",
+    "save": "Зберегти"
   },
   "form": {
     "labels": {
       "email": "Email",
       "password": "Пароль",
-      "confirm_password": "Підтвердіть пароль"
+      "confirm_password": "Підтвердіть пароль",
+      "username": "Ваш нікнейм",
+      "project_title": "Назва проекту",
+      "project_description": "Опис проекту",
+      "max_hours": "Час на скільки розрахований проект"
     },
     "placeholders": {
       "email": "test@email.com",
-      "password": "*****"
+      "password": "*****",
+      "username": "romankes",
+      "project_title": "Void Chat",
+      "project_description": "Void chat - проект портфоліо",
+      "max_hours": "0"
     }
   },
   "sign_in": {

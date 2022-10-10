@@ -4,6 +4,8 @@ export namespace User {
     // avatar: string;
     name: string;
     _id: string;
+    username: string;
+    hasProjects: boolean;
   };
 
   export type Detail = Item;

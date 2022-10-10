@@ -9,17 +9,20 @@ import {authActions} from '@/bus/auth';
 
 export function* fetchDetail(): SagaIterator {
   try {
-    console.log('call1');
+    console.log('call');
 
-    // const response: AxiosResponse<User.ResFetchDetail> = yield call(
-    //   apiUser.fetchDetail,
-    // );
-    // if (response.data) {
-    //   yield all([
-    //     put(userActions.saveDetail(response.data)),
-    //     put(authActions.toggleLogged(true)),
-    //   ]);
-    // }
+    const response: AxiosResponse<User.ResFetchDetail> = yield call(
+      apiUser.fetchDetail,
+    );
+
+    console.log(response.data);
+
+    if (response.data) {
+      yield all([
+        put(userActions.saveDetail(response.data)),
+        put(authActions.toggleLogged(true)),
+      ]);
+    }
   } catch (e) {
     console.log(`error fetch user detail worker ${e}`);
   } finally {

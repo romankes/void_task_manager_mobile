@@ -4,7 +4,9 @@ export namespace Ui {
     | 'sign_in'
     | 'sign_up'
     | 'user'
-    | 'user_action';
+    | 'user_action'
+    | 'project'
+    | 'project_action';
 
   export type Loader = {
     name: FormName;

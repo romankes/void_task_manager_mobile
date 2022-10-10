@@ -29,9 +29,10 @@ export const FilledField: FC<TProps> = ({
   color = 'default',
   errorEmpty,
   error,
+  numberOfLines = 1,
   ...props
 }) => {
-  const {styles, placeholderColors} = useStyles({color, error});
+  const {styles, placeholderColors} = useStyles({color, error, numberOfLines});
 
   const ref = useRef<TextInput>(null);
 
@@ -48,7 +49,7 @@ export const FilledField: FC<TProps> = ({
   return (
     <View style={margins}>
       {!!label && (
-        <Text family="regular" size={14} margin={{bottom: 14}} color="default">
+        <Text family="bold" size={14} margin={{bottom: 14}}>
           {label}
         </Text>
       )}

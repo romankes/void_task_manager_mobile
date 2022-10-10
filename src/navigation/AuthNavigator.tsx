@@ -5,11 +5,17 @@ import {useSelector, useDispatch} from 'react-redux';
 import {Routes} from './Routes';
 
 //navigator
-import {EmptyScreen, SignInScreen, SignUpScreen} from '@/screens';
+import {
+  EmptyScreen,
+  ForgotPasswordScreen,
+  SignInScreen,
+  SignUpScreen,
+} from '@/screens';
 
 export type AuthStackParamList = {
   [Routes.SIGN_IN]: undefined;
   [Routes.SIGN_UP]: undefined;
+  [Routes.FORGOT_PASSWORD]: undefined;
 };
 
 const AuthStack = createStackNavigator<AuthStackParamList>();
@@ -22,6 +28,10 @@ export const AuthNavigator = () => {
       }}>
       <AuthStack.Screen name={Routes.SIGN_IN} component={SignInScreen} />
       <AuthStack.Screen name={Routes.SIGN_UP} component={SignUpScreen} />
+      <AuthStack.Screen
+        name={Routes.FORGOT_PASSWORD}
+        component={ForgotPasswordScreen}
+      />
     </AuthStack.Navigator>
   );
 };

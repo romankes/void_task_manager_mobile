@@ -12,11 +12,13 @@ import {appActions, appSelectors} from '@/bus/app';
 
 import {navigationRef} from './RootNavigation';
 import {useTheme} from '@/hooks';
+import {userSelectors} from '@/bus/user';
+import {ProjectFormScreen} from '@/screens';
 
 export type AppStackParamList = {
   [Routes.AUTH_NAVIGATOR]: undefined;
   [Routes.TABS_NAVIGATOR]: undefined;
-  [Routes.USER_DETAIL]: undefined;
+  [Routes.PROJECT_FORM]: {type?: 'create' | 'update'};
 };
 
 const AppStack = createStackNavigator<AppStackParamList>();
@@ -26,6 +28,7 @@ export const AppNavigator: FC = () => {
 
   const logged = useSelector(authSelectors.getLogged);
   const initialized = useSelector(appSelectors.getInitialized);
+  const user = useSelector(userSelectors.getDetail);
 
   const {pallete} = useTheme();
 
@@ -62,10 +65,15 @@ export const AppNavigator: FC = () => {
             name={Routes.AUTH_NAVIGATOR}
             component={AuthNavigator}
           />
-        ) : (
+        ) : user?.hasProjects ? (
           <AppStack.Screen
             name={Routes.TABS_NAVIGATOR}
             component={TabNavigator}
+          />
+        ) : (
+          <AppStack.Screen
+            name={Routes.PROJECT_FORM}
+            component={ProjectFormScreen}
           />
         )}
       </AppStack.Navigator>

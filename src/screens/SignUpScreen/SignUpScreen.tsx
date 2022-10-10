@@ -25,7 +25,9 @@ export const SignUpScreen: FC<TProps> = ({navigation}) => {
 
   return (
     <AuthLayout
-      renderFooter={<Button>{t('buttons.sign_up')}</Button>}
+      renderFooter={
+        <Button onPress={handleSubmit}>{t('buttons.sign_up')}</Button>
+      }
       title={t('sign_up.title')}
       hasBack
       onBack={navigation.goBack}>
@@ -40,6 +42,22 @@ export const SignUpScreen: FC<TProps> = ({navigation}) => {
             onBlur={onBlur}
             placeholder={t('form.placeholders.email')}
             label={t('form.labels.email')}
+            autoCapitalize="none"
+          />
+        )}
+      />
+      <Controller
+        control={control}
+        name="username"
+        render={({field: {onChange, onBlur, value}, fieldState: {error}}) => (
+          <FilledField
+            value={value}
+            onChangeText={onChange}
+            error={error?.message}
+            onBlur={onBlur}
+            placeholder={t('form.placeholders.username')}
+            label={t('form.labels.username')}
+            autoCapitalize="none"
           />
         )}
       />
@@ -55,6 +73,7 @@ export const SignUpScreen: FC<TProps> = ({navigation}) => {
             onBlur={onBlur}
             placeholder={t('form.placeholders.password')}
             label={t('form.labels.password')}
+            autoCapitalize="none"
           />
         )}
       />
@@ -70,6 +89,7 @@ export const SignUpScreen: FC<TProps> = ({navigation}) => {
             onBlur={onBlur}
             placeholder={t('form.placeholders.password')}
             label={t('form.labels.confirm_password')}
+            autoCapitalize="none"
           />
         )}
       />
