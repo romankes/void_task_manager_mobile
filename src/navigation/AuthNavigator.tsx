@@ -5,7 +5,7 @@ import {useSelector, useDispatch} from 'react-redux';
 import {Routes} from './Routes';
 
 //navigator
-import {EmptyScreen} from '@/screens';
+import {EmptyScreen, SignInScreen, SignUpScreen} from '@/screens';
 
 export type AuthStackParamList = {
   [Routes.SIGN_IN]: undefined;
@@ -20,8 +20,8 @@ export const AuthNavigator = () => {
       screenOptions={{
         headerShown: false,
       }}>
-      <AuthStack.Screen name={Routes.SIGN_IN} component={EmptyScreen} />
-      <AuthStack.Screen name={Routes.SIGN_UP} component={EmptyScreen} />
+      <AuthStack.Screen name={Routes.SIGN_IN} component={SignInScreen} />
+      <AuthStack.Screen name={Routes.SIGN_UP} component={SignUpScreen} />
     </AuthStack.Navigator>
   );
 };

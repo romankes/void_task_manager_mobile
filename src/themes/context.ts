@@ -10,11 +10,12 @@ export enum ThemesName {
 }
 
 export enum Fonts {
-  black = 'OpenSans-ExtraBold',
-  bold = 'OpenSans-Bold',
-  light = 'OpenSans-Light',
-  medium = 'OpenSans-Medium',
-  regular = 'OpenSans-Regular',
+  extra_bold = 'Manrope-ExtraBold',
+  bold = 'Manrope-Bold',
+  regular = 'Manrope-Regular',
+  medium = 'Manrope-Medium',
+  light = 'Manrope-Light',
+  extra_light = 'Manrope-ExtraLight',
 }
 
 type ThemesItem = {

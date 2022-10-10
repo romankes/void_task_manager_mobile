@@ -1,5 +1,5 @@
 export const baseEnv = () => ({
-  DEFAULT_LOCALE: 'ru',
+  DEFAULT_LOCALE: 'ua',
   IS_PRODUCTION: true,
   IS_DEVELOPMENT: false,
   IS_TESTING: false,

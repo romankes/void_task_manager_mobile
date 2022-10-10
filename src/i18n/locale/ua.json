@@ -1,1 +1,26 @@
-{}
+{
+  "buttons": {
+    "sign_in": "Увійти",
+    "sign_up": "Зареєструватись"
+  },
+  "form": {
+    "labels": {
+      "email": "Email",
+      "password": "Пароль",
+      "confirm_password": "Підтвердіть пароль"
+    },
+    "placeholders": {
+      "email": "test@email.com",
+      "password": "*****"
+    }
+  },
+  "sign_in": {
+    "title": "Авторизація",
+    "footer": "Ви не маєте аккаунт?",
+    "sign_up": "Зареєструйтесь!",
+    "forgot_password": "Забули пароль?"
+  },
+  "sign_up": {
+    "title": "Реєстрація"
+  }
+}

@@ -17,11 +17,7 @@ const languageDetector: LanguageDetectorAsyncModule = {
   type: 'languageDetector',
   async: true,
   detect: (callback: any) => {
-    return AsyncStorage.getItem('LANGUAGE').then(
-      (locale = ENV.DEFAULT_LOCALE) => {
-        callback(locale);
-      },
-    );
+    return callback(ENV.DEFAULT_LOCALE);
   },
   init: () => {},
   cacheUserLanguage: () => {},

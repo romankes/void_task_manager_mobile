@@ -9,6 +9,10 @@ export type Icon = {
 };
 export type Text = {
   default: ColorValue;
+  danger: ColorValue;
+  gray: ColorValue;
+  link: ColorValue;
+  action: ColorValue;
 };
 
 type Border = {

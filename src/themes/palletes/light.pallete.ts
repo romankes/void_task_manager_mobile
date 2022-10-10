@@ -6,6 +6,10 @@ const pallete: Pallete = {
   },
   text: {
     default: '#171B16',
+    gray: '#171B1680',
+    danger: '#D63333',
+    action: '#D9BC22',
+    link: '#5BA0BF',
   },
   icon: {
     default: '#171B16',
