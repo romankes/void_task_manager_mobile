@@ -10,8 +10,8 @@ export const useData = () => {
 
   const {handleSubmit, control} = useForm<Auth.ReqSignIn>({
     defaultValues: {
-      email: '',
-      password: '',
+      email: 'test@test.com',
+      password: 'polopolo',
     },
     resolver: yupResolver(schema),
   });

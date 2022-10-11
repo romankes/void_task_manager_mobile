@@ -12,7 +12,7 @@ export namespace Project {
   export type ResFetchItems = Item[];
 
   export type ReqFetchDetail = {id: string};
-  export type ResFetchDetail = {};
+  export type ResFetchDetail = Detail;
 
   export type Form = {
     title: string;

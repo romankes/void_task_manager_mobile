@@ -28,7 +28,10 @@ export function* fetchItems(action: FetchItemsAsync): SagaIterator {
 
 export function* fetchDetail(action: FetchDetailAsync): SagaIterator {
   try {
-    yield put(uiActions.toggleLoader({name: 'project', loading: true}));
+    yield all([
+      put(projectActions.clearDetail()),
+      put(uiActions.toggleLoader({name: 'project', loading: true})),
+    ]);
 
     const response: AxiosResponse<Project.ResFetchDetail> = yield call(
       apiProject.fetchDetail,

@@ -5,7 +5,7 @@ import {Routes} from './Routes';
 
 import {EmptyScreen} from '@/screens';
 
-import {useTheme} from '@/hooks';
+import {useTabBar, useTheme} from '@/hooks';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import {View} from 'react-native';
 import {NAVIGATION} from '@/constants';
@@ -27,6 +27,8 @@ export const TabNavigator = () => {
 
   const {t} = useTranslation();
 
+  const {isShow} = useTabBar();
+
   return (
     <TabStack.Navigator
       screenOptions={{
@@ -36,6 +38,8 @@ export const TabNavigator = () => {
           height: 70 + insets.bottom,
           paddingBottom: insets.bottom,
           paddingTop: 8,
+
+          display: isShow ? 'flex' : 'none',
         },
 
         tabBarActiveTintColor: pallete.text.light as string,

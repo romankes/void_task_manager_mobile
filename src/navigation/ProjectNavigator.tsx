@@ -1,11 +1,16 @@
-import {EmptyScreen, ProjectFormScreen, ProjectListScreen} from '@/screens';
+import {
+  EmptyScreen,
+  ProjectDetailScreen,
+  ProjectFormScreen,
+  ProjectListScreen,
+} from '@/screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {Routes} from './Routes';
 
 export type ProjectStackParamList = {
   [Routes.PROJECT_LIST]: undefined;
-  [Routes.PROJECT_DETAIL]: undefined;
+  [Routes.PROJECT_DETAIL]: {id: string};
   [Routes.PROJECT_FORM]: {type?: 'update' | 'create'};
 };
 
@@ -20,7 +25,7 @@ export const ProjectNavigator = () => {
       />
       <ProjectStack.Screen
         name={Routes.PROJECT_DETAIL}
-        component={EmptyScreen}
+        component={ProjectDetailScreen}
       />
       <ProjectStack.Screen
         name={Routes.PROJECT_FORM}

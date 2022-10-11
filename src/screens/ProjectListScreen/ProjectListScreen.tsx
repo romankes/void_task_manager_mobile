@@ -1,10 +1,18 @@
-import {Button, Loader} from '@/components';
-import React from 'react';
+import React, {FC} from 'react';
+
+import {Button, Loader, ProjectCard} from '@/components';
 import {FlatList, SafeAreaView, View} from 'react-native';
+
 import {useData} from './useData';
 import {useStyles} from './useStyles';
 
-export const ProjectListScreen = () => {
+import {Routes} from '@/navigation';
+import {ProjectStackParamList} from '@/navigation/ProjectNavigator';
+import {StackScreenProps} from '@react-navigation/stack';
+
+type TProps = StackScreenProps<ProjectStackParamList, Routes.PROJECT_LIST>;
+
+export const ProjectListScreen: FC<TProps> = ({navigation}) => {
   const {styles} = useStyles();
 
   const {isLoading, onRefresh, projects, refreshing} = useData();
@@ -17,7 +25,14 @@ export const ProjectListScreen = () => {
         data={projects}
         ListEmptyComponent={isLoading && !refreshing ? <Loader /> : null}
         keyExtractor={({_id}) => `project-${_id}`}
-        renderItem={({item}) => null}
+        renderItem={({item}) => (
+          <ProjectCard
+            project={item}
+            onPress={() =>
+              navigation.navigate(Routes.PROJECT_DETAIL, {id: item._id})
+            }
+          />
+        )}
         refreshing={refreshing}
         onRefresh={onRefresh}
       />

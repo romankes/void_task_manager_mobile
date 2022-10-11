@@ -1,6 +1,8 @@
 import {Routes} from '@/navigation';
 
 import {ProjectNavigator} from '@/navigation/ProjectNavigator';
+import {TaskNavigator} from '@/navigation/TaskNavigator';
+
 import {EmptyScreen} from '@/screens';
 
 export const TABS = [
@@ -12,7 +14,7 @@ export const TABS = [
   {
     name: Routes.TASK_NAVIGATOR,
     title: 'task',
-    Screen: EmptyScreen,
+    Screen: TaskNavigator,
   },
   {
     name: Routes.USER_NAVIGATOR,

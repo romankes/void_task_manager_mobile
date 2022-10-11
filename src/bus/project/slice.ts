@@ -25,7 +25,9 @@ const slice = createSlice({
     saveDetail: (
       state: ProjectState,
       action: PayloadAction<Project.ResFetchDetail>,
-    ) => {},
+    ) => {
+      state.detail = action.payload;
+    },
     clearDetail: (state: ProjectState) => {},
 
     createItem: (
