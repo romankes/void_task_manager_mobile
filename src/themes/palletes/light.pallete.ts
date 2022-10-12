@@ -16,16 +16,27 @@ const pallete: Pallete = {
 
   icon: {
     default: '#171B16',
+    danger: '#D63333',
+    light: '#FCFAFF',
   },
   button: {
     background: {
       default: '#171B16',
+      danger_outline: '#FCFAFF',
+      outline: '#FCFAFF',
+      action: '#f6d41f',
     },
     text: {
       default: '#fff',
+      danger_outline: '#D63333',
+      outline: '#171B16',
+      action: '#171B16',
     },
     border: {
       default: '#171B16',
+      danger_outline: '#D63333',
+      outline: '#171B16',
+      action: '#f6d41f',
     },
   },
   input: {

@@ -1,4 +1,4 @@
-import {projectActions, projectSelectors} from '@/bus/project';
+import {Project, projectActions, projectSelectors} from '@/bus/project';
 import {useFetch} from '@/hooks';
 import {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -12,9 +12,9 @@ export const useData = ({id}: TArgs) => {
 
   const detail = useSelector(projectSelectors.getDetail);
 
-  const params = useMemo(() => ({id}), [id]);
+  const params: Project.ReqFetchDetail = useMemo(() => ({id}), [id]);
 
-  const {isLoading, onRefresh, refreshing} = useFetch({
+  const {isLoading, onRefresh, refreshing} = useFetch<Project.ReqFetchDetail>({
     fetcher: projectActions.fetchDetailAsync,
     loader: 'project',
     selectors: projectSelectors,

@@ -2,7 +2,7 @@ import {getCurrent, Routes} from '@/navigation';
 import {useFocusEffect} from '@react-navigation/native';
 import {useMemo, useState} from 'react';
 
-const HIDDEN_ROUTES: Routes[] = [Routes.PROJECT_DETAIL];
+const HIDDEN_ROUTES: Routes[] = [Routes.PROJECT_DETAIL, Routes.USER_DETAIL];
 
 export const useTabBar = () => {
   const [route, setRoute] = useState<Routes | ''>('');

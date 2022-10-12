@@ -6,3 +6,4 @@ export * from './ProjectFormScreen';
 export * from './ProjectListScreen';
 export * from './ProjectDetailScreen';
 export * from './TaskListScreen';
+export * from './UserDetailScreen';

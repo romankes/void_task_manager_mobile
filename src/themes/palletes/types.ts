@@ -7,6 +7,8 @@ export type Background = {
 
 export type Icon = {
   default: ColorValue;
+  danger: ColorValue;
+  light: ColorValue;
 };
 export type Text = {
   default: ColorValue;
@@ -23,6 +25,9 @@ type Border = {
 
 export type ButtonKeys = {
   default: ColorValue;
+  danger_outline: ColorValue;
+  action: ColorValue;
+  outline: ColorValue;
 };
 
 export type InputKeys = {

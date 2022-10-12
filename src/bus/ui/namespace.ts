@@ -6,7 +6,9 @@ export namespace Ui {
     | 'user'
     | 'user_action'
     | 'project'
-    | 'project_action';
+    | 'project_action'
+    | 'task'
+    | 'task_action';
 
   export type Loader = {
     name: FormName;
