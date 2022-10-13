@@ -18,8 +18,8 @@ type TProps = {
 
   children: ReactNode | ReactNode[];
 
-  onRefresh: () => any;
-  refreshing: boolean;
+  onRefresh?: () => any;
+  refreshing?: boolean;
   isLoading?: boolean;
 };
 
@@ -29,10 +29,18 @@ export const DetailLayout: FC<TProps> = ({
   title,
   renderFooter,
   onRefresh,
-  refreshing,
+  refreshing = false,
   isLoading,
 }) => {
   const {styles} = useStyles();
+
+  const refreshProps = onRefresh
+    ? {
+        refreshControl: (
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        ),
+      }
+    : {};
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -46,10 +54,9 @@ export const DetailLayout: FC<TProps> = ({
         <View style={{width: 32}} />
       </View>
       <ScrollView
-        style={[styles.content, styles.container]}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-        }>
+        {...refreshProps}
+        showsVerticalScrollIndicator={false}
+        style={[styles.content, styles.container]}>
         {isLoading && !refreshing ? <Loader height={200} /> : children}
       </ScrollView>
       <View style={[styles.footer, styles.container]}>{renderFooter}</View>

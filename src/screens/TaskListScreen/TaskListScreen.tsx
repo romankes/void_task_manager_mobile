@@ -1,18 +1,27 @@
-import {Button, Loader} from '@/components';
-import {TASK} from '@/constants';
 import React, {FC} from 'react';
 
+import {Button, Loader} from '@/components';
 import {FlatList, SafeAreaView, View} from 'react-native';
 
+import {TASK} from '@/constants';
 import {useData} from './useData';
 import {useStyles} from './useStyles';
 
-type TProps = {};
+import {Routes} from '@/navigation';
+import {TaskStackParamList} from '@/navigation/TaskNavigator';
+import {StackScreenProps} from '@react-navigation/stack';
+import {useTranslation} from 'react-i18next';
 
-export const TaskListScreen: FC<TProps> = ({}) => {
+//TODO: Real need react-calendars?
+
+type TProps = StackScreenProps<TaskStackParamList, Routes.TASK_LIST>;
+
+export const TaskListScreen: FC<TProps> = ({navigation}) => {
   const {styles} = useStyles();
 
   const {isLoading, onRefresh, refreshing, tasks, type, setType} = useData();
+
+  const {t} = useTranslation();
 
   return (
     <SafeAreaView style={styles.wrapper}>
@@ -24,7 +33,7 @@ export const TaskListScreen: FC<TProps> = ({}) => {
             key={`filter-button-${item}`}
             onPress={() => setType(item)}
             style={styles.button}>
-            {item}
+            {t(`date_filters.${item}`)}
           </Button>
         ))}
       </View>
@@ -39,6 +48,14 @@ export const TaskListScreen: FC<TProps> = ({}) => {
         onRefresh={onRefresh}
         refreshing={refreshing}
       />
+      <View style={[styles.footer, styles.container]}>
+        <Button
+          onPress={() =>
+            navigation.navigate(Routes.TASK_FORM, {type: 'create'})
+          }>
+          Create
+        </Button>
+      </View>
     </SafeAreaView>
   );
 };

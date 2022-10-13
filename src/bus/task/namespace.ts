@@ -24,6 +24,8 @@ export namespace Task {
     description: string;
 
     project: T;
+
+    date: string;
   };
 
   export type ReqCreateItem = Form;

@@ -56,8 +56,8 @@ export const FilledField: FC<TProps> = ({
       <View style={styles.inputWrapper}>
         {leftIcon && <View style={styles.leftIcon}>{leftIcon}</View>}
         <TextInput
-          ref={ref}
           {...props}
+          ref={ref}
           style={[
             styles.input,
             props.multiline && {paddingVertical: 8, textAlignVertical: 'top'},

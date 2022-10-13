@@ -10,6 +10,11 @@ import {store} from '@/store';
 
 import {AppNavigator} from './navigation/AppNavigator';
 
+import {LocaleConfig} from 'react-native-calendars';
+import {CALENDAR} from '@/constants';
+
+LocaleConfig.locales.ua = CALENDAR.LOCALES.ua;
+
 export const App = () => (
   <Provider store={store}>
     <ThemeLayout>

@@ -27,7 +27,7 @@ export type FetchDetailAsync = App.BaseAction<
 >;
 export type CreateItemAsync = App.BaseAction<
   typeof types.CREATE_ITEM,
-  Task.ResCreateItem
+  Task.ReqCreateItem
 >;
 export type UpdateItemAsync = App.BaseAction<
   typeof types.UPDATE_ITEM,

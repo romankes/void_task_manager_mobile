@@ -11,6 +11,11 @@
     "save": "Зберегти",
     "logout": "Вийти"
   },
+  "date_filters": {
+    "month": "На місяць",
+    "today": "На сьогодні",
+    "week": "На тиждень"
+  },
   "form": {
     "labels": {
       "email": "Email",
@@ -19,7 +24,10 @@
       "username": "Ваш нікнейм",
       "project_title": "Назва проекту",
       "project_description": "Опис проекту",
-      "max_hours": "Час на скільки розрахований проект"
+      "max_hours": "Час на скільки розрахований проект",
+      "task_title": "Назва задачі",
+      "task_description": "Опис задачі",
+      "project": "Проект"
     },
     "placeholders": {
       "email": "test@email.com",
@@ -27,7 +35,10 @@
       "username": "romankes",
       "project_title": "Void Chat",
       "project_description": "Void chat - проект портфоліо",
-      "max_hours": "0"
+      "max_hours": "0",
+      "task_title": "ініціалізація проекту",
+      "task_description": "Створити базову структуру",
+      "project": "Виберіть проект"
     }
   },
   "sign_in": {
@@ -38,5 +49,8 @@
   },
   "sign_up": {
     "title": "Реєстрація"
+  },
+  "task_form": {
+    "title": "Створення задачі"
   }
 }

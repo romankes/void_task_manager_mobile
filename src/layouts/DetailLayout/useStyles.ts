@@ -39,11 +39,11 @@ export const useStyles = () => {
 
           backgroundColor: pallete.background.default,
 
-          paddingTop: 14,
-          borderTopLeftRadius: 16,
-          borderTopRightRadius: 16,
+          paddingTop: 24,
+          borderTopLeftRadius: 32,
+          borderTopRightRadius: 32,
 
-          height: bottom + 64,
+          height: bottom + 76,
 
           marginBottom: -bottom,
         },

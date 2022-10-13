@@ -24,7 +24,7 @@ export const ProjectDetailScreen: FC<TProps> = ({navigation, route}) => {
     <DetailLayout
       {...props}
       title={detail?.title || ''}
-      renderFooter={<Button>Tete</Button>}
+      renderFooter={<Button variant="round">Tete</Button>}
       onBack={navigation.goBack}>
       <Text margin={{top: 12}}>{detail?.description}</Text>
     </DetailLayout>

@@ -26,6 +26,9 @@ export const useStyles = () => {
         button: {
           width: width * 0.33 - 16,
         },
+        footer: {
+          paddingVertical: 12,
+        },
       }),
     [pallete],
   );

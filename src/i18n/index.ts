@@ -8,6 +8,9 @@ import ua from './locale/ua.json';
 import ENV from '@/configs';
 import AsyncStorage from '@react-native-community/async-storage';
 
+import {LocaleConfig} from 'react-native-calendars';
+import {CALENDAR} from '@/constants';
+
 export enum Languages {
   UA = 'ua',
   RU = 'ru',
@@ -17,6 +20,8 @@ const languageDetector: LanguageDetectorAsyncModule = {
   type: 'languageDetector',
   async: true,
   detect: (callback: any) => {
+    LocaleConfig.defaultLocale = ENV.DEFAULT_LOCALE;
+
     return callback(ENV.DEFAULT_LOCALE);
   },
   init: () => {},
