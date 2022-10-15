@@ -10,7 +10,7 @@ export enum types {
 }
 
 export type TaskState = {
-  items: Task.Item[];
+  items: [string, Task.Item[]][];
   detail: Task.Detail | null;
 
   currentPage: number;

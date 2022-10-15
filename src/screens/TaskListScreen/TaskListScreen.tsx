@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import {Button, Loader} from '@/components';
+import {Button, Loader, TaskCard, TaskGroupCard, Text} from '@/components';
 import {FlatList, SafeAreaView, View} from 'react-native';
 
 import {TASK} from '@/constants';
@@ -11,6 +11,8 @@ import {Routes} from '@/navigation';
 import {TaskStackParamList} from '@/navigation/TaskNavigator';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useTranslation} from 'react-i18next';
+
+import {format} from 'date-fns';
 
 //TODO: Real need react-calendars?
 
@@ -40,8 +42,15 @@ export const TaskListScreen: FC<TProps> = ({navigation}) => {
       <FlatList
         style={[styles.content, styles.container]}
         data={tasks}
-        keyExtractor={({_id}) => `task-${_id}`}
-        renderItem={() => null}
+        keyExtractor={([_id]) => `date-${_id}`}
+        showsVerticalScrollIndicator={false}
+        renderItem={({item}) => (
+          <TaskGroupCard
+            date={item[0]}
+            tasks={item[1]}
+            onPress={id => navigation.navigate(Routes.TASK_DETAIL, {id})}
+          />
+        )}
         ListEmptyComponent={
           isLoading && !refreshing ? <Loader height={200} /> : null
         }

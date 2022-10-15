@@ -19,7 +19,7 @@ const slice = createSlice({
       state: TaskState,
       action: PayloadAction<Task.ResFetchItems>,
     ) => {
-      state.items = action.payload;
+      state.items = Object.entries(action.payload);
     },
 
     saveDetail: (

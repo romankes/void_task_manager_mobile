@@ -6,6 +6,7 @@ const HIDDEN_ROUTES: Routes[] = [
   Routes.PROJECT_DETAIL,
   Routes.USER_DETAIL,
   Routes.TASK_FORM,
+  Routes.TASK_DETAIL,
 ];
 
 export const useTabBar = () => {

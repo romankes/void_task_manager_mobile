@@ -9,7 +9,7 @@ const pallete: Pallete = {
     default: '#171B16',
     gray: '#171B1680',
     danger: '#D63333',
-    action: '#D9BC22',
+    action: '#f6d41f',
     link: '#5BA0BF',
     light: '#FCFAFF',
   },
@@ -52,6 +52,7 @@ const pallete: Pallete = {
   },
   border: {
     default: '#171B16',
+    action: '#f6d41f',
   },
   switch: {
     thumb: {

@@ -21,6 +21,7 @@ export type Text = {
 
 type Border = {
   default: ColorValue;
+  action: ColorValue;
 };
 
 export type ButtonKeys = {

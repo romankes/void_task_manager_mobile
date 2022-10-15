@@ -5,6 +5,7 @@ import {FetchDetailAsync, FetchItemsAsync} from '../../types';
 import {apiTask} from '../../api';
 import {AxiosResponse} from 'axios';
 import {Task} from '../../namespace';
+import {taskActions} from '../../slice';
 
 export function* fetchItems(action: FetchItemsAsync): SagaIterator {
   try {
@@ -15,7 +16,9 @@ export function* fetchItems(action: FetchItemsAsync): SagaIterator {
       action.payload,
     );
 
-    console.log(response.data);
+    if (response.data) {
+      yield put(taskActions.saveItems(response.data));
+    }
   } catch (e) {
     console.log(`error fetch task items worker ${e}`);
   } finally {
@@ -32,7 +35,9 @@ export function* fetchDetail(action: FetchDetailAsync): SagaIterator {
       action.payload,
     );
 
-    console.log(response.data);
+    if (response.data) {
+      yield put(taskActions.saveDetail(response.data));
+    }
   } catch (e) {
     console.log(`error fetch task detail worker ${e}`);
   } finally {

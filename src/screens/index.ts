@@ -8,3 +8,4 @@ export * from './ProjectDetailScreen';
 export * from './TaskListScreen';
 export * from './UserDetailScreen';
 export * from './TaskFormScreen';
+export * from './TaskDetailScreen';
