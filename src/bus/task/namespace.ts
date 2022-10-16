@@ -11,12 +11,14 @@ export namespace Task {
   export type Detail = Item & {
     startDate: string | null;
     endDate: string | null;
+    date: string;
   };
 
-  export type FilterType = 'week' | 'today' | 'month';
+  export type DateFilterType = 'week' | 'today' | 'month';
+  export type StatusFilterType = 'started' | 'waiting' | 'finished';
 
   export type ReqFetchItems = {
-    endDate: string;
+    date: string;
   };
   export type ResFetchItems = {
     [key: string]: Item[];
@@ -28,12 +30,12 @@ export namespace Task {
   export type ResFetchDetail = Detail;
 
   export type Form<T = string> = {
-    title: string;
-    description: string;
+    title?: string;
+    description?: string;
 
-    project: T;
+    project?: T;
 
-    date: string;
+    date?: string;
   };
 
   export type ReqCreateItem = Form;
@@ -41,7 +43,10 @@ export namespace Task {
 
   export type ReqUpdateItem = {
     id: string;
-    task: Form;
+    task: Form & {
+      startDate?: string;
+      endDate?: string;
+    };
   };
-  export type ResUpdateItem = {};
+  export type ResUpdateItem = Detail;
 }

@@ -11,18 +11,33 @@ const END_DATE = {
   month: new Date(new Date().setDate(DATE.getDate() + 30)),
 };
 
+const STATUSES = {
+  waiting: {
+    endDate: null,
+    startDate: null,
+  },
+  started: {
+    // endDate: null,
+    //TODO: create a new mechanism
+  },
+  finished: {
+    //TODO: create a new mechanism
+  },
+};
+
 export const useData = () => {
   const dispatch = useDispatch();
 
   const tasks = useSelector(taskSelectors.getItems);
 
-  const [type, setType] = useState<Task.FilterType>('today');
+  const [date, setDate] = useState<Task.DateFilterType>('today');
+  const [status, setStatus] = useState<Task.StatusFilterType>('waiting');
 
   const params: Task.ReqFetchItems = useMemo(
     () => ({
-      endDate: END_DATE[type].toISOString(),
+      date: END_DATE[date].toISOString(),
     }),
-    [type],
+    [date],
   );
 
   const res = useFetch<Task.ReqFetchItems>({
@@ -32,5 +47,5 @@ export const useData = () => {
     params,
   });
 
-  return {...res, tasks, type, setType};
+  return {...res, tasks, date, setDate, status, setStatus};
 };

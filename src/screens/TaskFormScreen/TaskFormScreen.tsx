@@ -18,21 +18,25 @@ import {DetailLayout} from '@/layouts';
 
 type TProps = StackScreenProps<TaskStackParamList, Routes.TASK_FORM>;
 
-export const TaskFormScreen: FC<TProps> = ({navigation}) => {
+export const TaskFormScreen: FC<TProps> = ({navigation, route}) => {
   const {styles, background} = useStyles();
 
-  const {control, handleSubmit, projects} = useData();
+  const {control, handleSubmit, projects} = useData({type: route.params?.type});
 
   const {t} = useTranslation();
+
+  console.log(route.params);
 
   return (
     <DetailLayout
       onBack={navigation.goBack}
-      title={t('task_form.title')}
+      title={`${t(`form.titles.${route.params?.type || 'create'}`)} ${t(
+        'task_form.title',
+      )}`}
       isLoading={false}
       renderFooter={
         <Button variant="round" onPress={handleSubmit}>
-          {t('buttons.save')}
+          {t(`buttons.${route.params?.type === 'create' ? 'create' : 'save'}`)}
         </Button>
       }>
       <View style={styles.calendar}>
@@ -46,7 +50,7 @@ export const TaskFormScreen: FC<TProps> = ({navigation}) => {
               }}
               minDate={new Date().toString()}
               onDayPress={v => onChange(v.dateString)}
-              markedDates={{[value]: {selected: true}}}
+              markedDates={value ? {[value]: {selected: true}} : {}}
             />
           )}
         />
@@ -89,7 +93,7 @@ export const TaskFormScreen: FC<TProps> = ({navigation}) => {
         render={({field: {onChange, value}}) => (
           <SelectBox<Project.Item>
             margin={{bottom: 18}}
-            current={value}
+            current={value || null}
             renderCurrent={current =>
               current?.title || t('form.placeholders.project')
             }

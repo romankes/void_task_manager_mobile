@@ -5,7 +5,17 @@ import {StyleSheet} from 'react-native';
 export const useStyles = () => {
   const {pallete} = useTheme();
 
-  const styles = useMemo(() => StyleSheet.create({}), [pallete]);
+  const styles = useMemo(
+    () =>
+      StyleSheet.create({
+        timer: {
+          alignItems: 'center',
+
+          marginTop: 24,
+        },
+      }),
+    [pallete],
+  );
 
   return {styles};
 };

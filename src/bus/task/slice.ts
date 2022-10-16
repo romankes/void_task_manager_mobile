@@ -28,7 +28,9 @@ const slice = createSlice({
     ) => {
       state.detail = action.payload;
     },
-    clearDetail: (state: TaskState) => {},
+    clearDetail: (state: TaskState) => {
+      state.detail = null;
+    },
 
     createItem: (
       state: TaskState,
@@ -37,7 +39,9 @@ const slice = createSlice({
     updateItem: (
       state: TaskState,
       action: PayloadAction<Task.ResUpdateItem>,
-    ) => {},
+    ) => {
+      state.detail = action.payload;
+    },
   },
 });
 

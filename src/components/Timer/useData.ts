@@ -7,11 +7,12 @@ type TArgs = {
   endDate?: string | null;
 };
 
-const NOW = new Date().getTime();
 const appendZero = (num: number) => String(num).padStart(2, '0');
 
 export const useData = ({endDate, startDate}: TArgs) => {
   const dispatch = useDispatch();
+
+  const NOW = useMemo(() => new Date().getTime(), []);
 
   const timer = useRef<ReturnType<typeof setInterval>>(0);
 
@@ -22,7 +23,10 @@ export const useData = ({endDate, startDate}: TArgs) => {
   }, []);
 
   const onStart = useCallback(() => {
-    timer.current = setInterval(onClock, 1000);
+    if (startDate) {
+      setSeconds(new Date(startDate).getTime());
+      timer.current = setInterval(onClock, 1000);
+    }
   }, [startDate]);
 
   useEffect(() => {
@@ -35,9 +39,19 @@ export const useData = ({endDate, startDate}: TArgs) => {
     };
   }, [onStart]);
 
+  const onStop = useCallback(() => {
+    if (endDate && timer.current) {
+      clearInterval(timer.current);
+    }
+  }, [endDate]);
+
+  useEffect(() => {
+    onStop();
+  }, [onStop]);
+
   const date = useMemo(() => {
     const interval = intervalToDuration({
-      start: new Date(NOW),
+      start: new Date(startDate || NOW),
       end: new Date(),
     });
 

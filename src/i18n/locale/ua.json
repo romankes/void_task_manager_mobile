@@ -9,14 +9,24 @@
     "sign_up": "Зареєструватись",
     "create": "Створити",
     "save": "Зберегти",
-    "logout": "Вийти"
+    "logout": "Вийти",
+    "update": "Редактировать"
   },
   "date_filters": {
     "month": "На місяць",
     "today": "На сьогодні",
     "week": "На тиждень"
   },
+  "status_filters": {
+    "waiting": "Не розпочаті",
+    "started": "Розпочаті",
+    "finished": "Закінчені"
+  },
   "form": {
+    "titles": {
+      "create": "Створення",
+      "update": "Оновлення"
+    },
     "labels": {
       "email": "Email",
       "password": "Пароль",
@@ -51,6 +61,6 @@
     "title": "Реєстрація"
   },
   "task_form": {
-    "title": "Створення задачі"
+    "title": "задачі"
   }
 }

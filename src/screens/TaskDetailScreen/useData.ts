@@ -1,11 +1,13 @@
 import {taskActions, taskSelectors} from '@/bus/task';
 import {useFetch} from '@/hooks';
-import {useMemo} from 'react';
+import {useCallback, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 type TArgs = {
   id: string;
 };
+
+type TStatus = 'waiting' | 'started' | 'stopped';
 
 export const useData = ({id}: TArgs) => {
   const dispatch = useDispatch();
@@ -21,5 +23,30 @@ export const useData = ({id}: TArgs) => {
     params,
   });
 
-  return {...res, detail};
+  const onUpdate = useCallback(
+    (status: TStatus) => {
+      if (detail) {
+        if (status === 'waiting') {
+          dispatch(
+            taskActions.updateItemAsync({
+              id: detail._id,
+              task: {startDate: new Date().toISOString()},
+            }),
+          );
+        }
+
+        if (status === 'started') {
+          dispatch(
+            taskActions.updateItemAsync({
+              id: detail._id,
+              task: {endDate: new Date().toISOString()},
+            }),
+          );
+        }
+      }
+    },
+    [detail],
+  );
+
+  return {...res, onUpdate, detail};
 };

@@ -22,6 +22,8 @@ export const useStyles = () => {
         buttons: {
           flexDirection: 'row',
           justifyContent: 'space-between',
+
+          marginVertical: 4,
         },
         button: {
           width: width * 0.33 - 16,

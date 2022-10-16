@@ -21,21 +21,42 @@ type TProps = StackScreenProps<TaskStackParamList, Routes.TASK_LIST>;
 export const TaskListScreen: FC<TProps> = ({navigation}) => {
   const {styles} = useStyles();
 
-  const {isLoading, onRefresh, refreshing, tasks, type, setType} = useData();
+  const {
+    isLoading,
+    onRefresh,
+    refreshing,
+    tasks,
+    date,
+    setDate,
+    status,
+    setStatus,
+  } = useData();
 
   const {t} = useTranslation();
 
   return (
     <SafeAreaView style={styles.wrapper}>
       <View style={[styles.buttons, styles.container]}>
-        {TASK.FILTER_BUTTONS.map(item => (
+        {TASK.FILTER_BUTTONS.DATE.map(item => (
           <Button
-            color={type === item ? 'action' : 'outline'}
+            color={date === item ? 'action' : 'outline'}
             size="small"
             key={`filter-button-${item}`}
-            onPress={() => setType(item)}
+            onPress={() => setDate(item)}
             style={styles.button}>
             {t(`date_filters.${item}`)}
+          </Button>
+        ))}
+      </View>
+      <View style={[styles.buttons, styles.container]}>
+        {TASK.FILTER_BUTTONS.STATUS.map(item => (
+          <Button
+            color={status === item ? 'action' : 'outline'}
+            size="small"
+            key={`filter-button-${item}`}
+            onPress={() => setStatus(item)}
+            style={styles.button}>
+            {t(`status_filters.${item}`)}
           </Button>
         ))}
       </View>
