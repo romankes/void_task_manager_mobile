@@ -22,6 +22,7 @@ export const useStyles = () => {
           elevation: 21,
 
           marginVertical: 8,
+          marginHorizontal: 16,
           paddingHorizontal: 12,
           paddingVertical: 16,
 

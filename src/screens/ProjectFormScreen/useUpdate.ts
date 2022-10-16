@@ -1,12 +1,15 @@
-import {Project, projectSelectors} from '@/bus/project';
+import {Project, projectActions, projectSelectors} from '@/bus/project';
 import {useMemo} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 export const useUpdate = () => {
+  const dispatch = useDispatch();
   const detail = useSelector(projectSelectors.getDetail);
 
-  const onUpdate = (data: Project.Form) => {
-    console.log(data);
+  const onUpdate = (project: Project.Form) => {
+    if (detail) {
+      dispatch(projectActions.updateItemAsync({id: detail._id, project}));
+    }
   };
 
   const initValue: Project.Form | null = useMemo(

@@ -1,6 +1,7 @@
 import {Project, projectActions, projectSelectors} from '@/bus/project';
 import {useFetch} from '@/hooks';
-import {useMemo} from 'react';
+import {useCallback, useMemo} from 'react';
+import {DragEndParams} from 'react-native-draggable-flatlist';
 import {useDispatch, useSelector} from 'react-redux';
 
 export const useData = () => {
@@ -17,5 +18,13 @@ export const useData = () => {
     params,
   });
 
-  return {isLoading, onRefresh, refreshing, projects};
+  const onUpdatePriority = useCallback(
+    ({data, from, to}: DragEndParams<Project.Item>) => {
+      console.log(data[0]._id, from, to);
+      //TODO: update
+    },
+    [],
+  );
+
+  return {isLoading, onRefresh, refreshing, projects, onUpdatePriority};
 };

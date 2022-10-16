@@ -13,15 +13,16 @@ const END_DATE = {
 
 const STATUSES = {
   waiting: {
-    endDate: null,
-    startDate: null,
+    endDate: false,
+    startDate: false,
   },
   started: {
-    // endDate: null,
-    //TODO: create a new mechanism
+    endDate: false,
+    startDate: true,
   },
   finished: {
-    //TODO: create a new mechanism
+    endDate: true,
+    startDate: true,
   },
 };
 
@@ -35,9 +36,10 @@ export const useData = () => {
 
   const params: Task.ReqFetchItems = useMemo(
     () => ({
+      ...STATUSES[status],
       date: END_DATE[date].toISOString(),
     }),
-    [date],
+    [date, status],
   );
 
   const res = useFetch<Task.ReqFetchItems>({

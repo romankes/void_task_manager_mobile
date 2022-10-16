@@ -5,21 +5,7 @@ import {StyleSheet} from 'react-native';
 export const useStyles = () => {
   const {pallete} = useTheme();
 
-  const styles = useMemo(
-    () =>
-      StyleSheet.create({
-        wrapper: {
-          height: '100%',
-        },
-        container: {
-          paddingHorizontal: 16,
-        },
-        content: {
-          flex: 1,
-        },
-      }),
-    [pallete],
-  );
+  const styles = useMemo(() => StyleSheet.create({}), [pallete]);
 
   return {styles};
 };
