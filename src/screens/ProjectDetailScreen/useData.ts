@@ -12,6 +12,8 @@ export const useData = ({id}: TArgs) => {
 
   const detail = useSelector(projectSelectors.getDetail);
 
+  console.log(detail);
+
   const params: Project.ReqFetchDetail = useMemo(() => ({id}), [id]);
 
   const {isLoading, onRefresh, refreshing} = useFetch<Project.ReqFetchDetail>({

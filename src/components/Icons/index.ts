@@ -4,3 +4,4 @@ export * from './ChevronIcon';
 export * from './UserIcon';
 export * from './TrashIcon';
 export * from './TimerIcons';
+export * from './CloseIcon';

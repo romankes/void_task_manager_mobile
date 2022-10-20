@@ -4,6 +4,7 @@ const pallete: Pallete = {
   background: {
     default: '#FCFAFF',
     dark: '#171B16',
+    outline: '#171B1690',
   },
   text: {
     default: '#171B16',
@@ -25,18 +26,21 @@ const pallete: Pallete = {
       danger_outline: '#FCFAFF',
       outline: '#FCFAFF',
       action: '#f6d41f',
+      danger: '#D63333',
     },
     text: {
       default: '#fff',
       danger_outline: '#D63333',
       outline: '#171B16',
       action: '#171B16',
+      danger: '#fff',
     },
     border: {
       default: '#171B16',
       danger_outline: '#D63333',
       outline: '#171B16',
       action: '#f6d41f',
+      danger: '#D63333',
     },
   },
   input: {

@@ -1,6 +1,6 @@
 import {Project, projectActions, projectSelectors} from '@/bus/project';
 import {useFetch} from '@/hooks';
-import {useCallback, useMemo} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import {DragEndParams} from 'react-native-draggable-flatlist';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -8,6 +8,8 @@ export const useData = () => {
   const dispatch = useDispatch();
 
   const projects = useSelector(projectSelectors.getItems);
+
+  const [projectsData, setProjectsData] = useState(projects);
 
   const params: Project.ReqFetchItems = useMemo(() => ({}), []);
 
@@ -18,13 +20,26 @@ export const useData = () => {
     params,
   });
 
+  const updated = useMemo(
+    () => projectsData.some(({_id}, i) => projects[i]._id !== _id),
+    [projects, projectsData],
+  );
+
   const onUpdatePriority = useCallback(
     ({data, from, to}: DragEndParams<Project.Item>) => {
-      console.log(data[0]._id, from, to);
+      console.log(data.length, from, to);
       //TODO: update
+      setProjectsData(data);
     },
     [],
   );
 
-  return {isLoading, onRefresh, refreshing, projects, onUpdatePriority};
+  return {
+    isLoading,
+    onRefresh,
+    refreshing,
+    projects: projectsData,
+    onUpdatePriority,
+    updated,
+  };
 };

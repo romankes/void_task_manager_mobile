@@ -6,7 +6,9 @@ export namespace Project {
     maxHours: number;
   };
 
-  export type Detail = Item;
+  export type Detail = Item & {
+    spentHors: number;
+  };
 
   export type ReqFetchItems = {};
   export type ResFetchItems = Item[];

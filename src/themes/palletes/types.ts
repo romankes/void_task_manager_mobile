@@ -3,6 +3,7 @@ import {ColorValue} from 'react-native';
 export type Background = {
   default: ColorValue;
   dark: ColorValue;
+  outline: ColorValue;
 };
 
 export type Icon = {
@@ -29,6 +30,7 @@ export type ButtonKeys = {
   danger_outline: ColorValue;
   action: ColorValue;
   outline: ColorValue;
+  danger: ColorValue;
 };
 
 export type InputKeys = {

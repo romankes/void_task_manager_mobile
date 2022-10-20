@@ -4,6 +4,7 @@ import {
   Avatar,
   BackArrowIcon,
   Button,
+  DangerModal,
   IconButton,
   Text,
   TrashIcon,
@@ -27,10 +28,9 @@ export const UserDetailScreen: FC<TProps> = ({navigation}) => {
 
   const {styles} = useStyles();
 
-  const {detail} = useData();
+  const {detail, onLogout, isOpened, setIsOpened, onRemove} = useData();
 
   const {t} = useTranslation();
-  console.log(detail);
 
   return (
     <View style={styles.wrapper}>
@@ -50,16 +50,25 @@ export const UserDetailScreen: FC<TProps> = ({navigation}) => {
             {detail?.email}
           </Text>
         </View>
-        <IconButton size={32}>
+        <IconButton size={32} onPress={() => setIsOpened(true)}>
           <TrashIcon size={28} color="danger" />
         </IconButton>
       </View>
       <ScrollView style={styles.content} />
       <View style={[styles.footer, styles.container]}>
-        <Button variant="round" color="danger_outline">
+        <Button variant="round" color="danger_outline" onPress={onLogout}>
           {t('buttons.logout')}
         </Button>
       </View>
+
+      <DangerModal
+        onClose={() => setIsOpened(false)}
+        onSubmit={onRemove}
+        visible={isOpened}>
+        <Text size={18} align="center">
+          {t('titles.user_remove')}
+        </Text>
+      </DangerModal>
     </View>
   );
 };

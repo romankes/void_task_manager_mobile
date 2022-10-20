@@ -1,0 +1,1 @@
+export {DangerModal} from './DangerModal';
