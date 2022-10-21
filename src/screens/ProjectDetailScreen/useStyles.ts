@@ -10,16 +10,6 @@ export const useStyles = () => {
       StyleSheet.create({
         description: {
           backgroundColor: pallete.background.default,
-          shadowColor: pallete.background.dark,
-
-          shadowOffset: {
-            height: 0,
-            width: 0,
-          },
-
-          shadowOpacity: 0.35,
-          shadowRadius: 4,
-          elevation: 21,
 
           marginTop: 12,
 

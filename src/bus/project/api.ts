@@ -29,4 +29,8 @@ export const apiProject = new (class Api {
   }: Project.ReqUpdateItem): AxiosPromise<Project.ResCreateItem> {
     return axios({url: `/projects/${id}`, method: 'patch', data: {project}});
   }
+
+  removeItem({id}: Project.ReqRemoveItem): AxiosPromise<Project.ResRemoveItem> {
+    return axios({url: `/projects/${id}`, method: 'delete'});
+  }
 })();

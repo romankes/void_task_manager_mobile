@@ -35,25 +35,28 @@ export const TabNavigator = () => {
         headerShown: false,
         tabBarStyle: {
           backgroundColor: pallete.background.dark,
-          height: 70 + insets.bottom,
+          height: 60 + insets.bottom,
           paddingBottom: insets.bottom,
           paddingTop: 8,
 
           display: isShow ? 'flex' : 'none',
+
+          borderTopRightRadius: 22,
+          borderTopLeftRadius: 22,
         },
 
         tabBarActiveTintColor: pallete.text.light as string,
         // tabBarInactiveTintColor: pallete.text.default as string,
       }}>
-      {NAVIGATION.TABS.map(({name, title, Screen}) => (
+      {NAVIGATION.TABS.map(({name, title, Screen, Icon}) => (
         <TabStack.Screen
           key={`tab-${name}`}
           options={() => ({
-            // tabBarIcon: ({focused}) => (
-            //   <ProfileIcon color={focused ? 'action' : 'default'} size={24} />
-            // ),
-            tabBarLabel: () => (
-              <Text color="light" family="medium">
+            tabBarIcon: ({focused}) => (
+              <Icon color={focused ? 'action' : 'light'} size={24} />
+            ),
+            tabBarLabel: ({focused}) => (
+              <Text color={focused ? 'action' : 'light'} family="medium">
                 {t(`tabs.${title}`)}
               </Text>
             ),

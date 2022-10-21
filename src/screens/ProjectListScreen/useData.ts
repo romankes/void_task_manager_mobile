@@ -1,6 +1,6 @@
 import {Project, projectActions, projectSelectors} from '@/bus/project';
 import {useFetch} from '@/hooks';
-import {useCallback, useMemo, useState} from 'react';
+import {useCallback, useEffect, useMemo, useState} from 'react';
 import {DragEndParams} from 'react-native-draggable-flatlist';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -10,6 +10,12 @@ export const useData = () => {
   const projects = useSelector(projectSelectors.getItems);
 
   const [projectsData, setProjectsData] = useState(projects);
+
+  console.log(projects);
+
+  useEffect(() => {
+    setProjectsData(projects);
+  }, [projects]);
 
   const params: Project.ReqFetchItems = useMemo(() => ({}), []);
 
@@ -21,7 +27,7 @@ export const useData = () => {
   });
 
   const updated = useMemo(
-    () => projectsData.some(({_id}, i) => projects[i]._id !== _id),
+    () => projectsData.some(({_id}, i) => projects[i]?._id !== _id),
     [projects, projectsData],
   );
 

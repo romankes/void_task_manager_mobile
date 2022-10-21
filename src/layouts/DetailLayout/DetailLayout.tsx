@@ -14,6 +14,9 @@ type TProps = {
   title: string;
   onBack: () => any;
 
+  rightIcon?: ReactNode;
+  onPressRightIcon?: () => any;
+
   renderFooter: ReactNode | ReactNode[];
 
   children: ReactNode | ReactNode[];
@@ -31,6 +34,8 @@ export const DetailLayout: FC<TProps> = ({
   onRefresh,
   refreshing = false,
   isLoading,
+  rightIcon,
+  onPressRightIcon,
 }) => {
   const {styles} = useStyles();
 
@@ -51,7 +56,13 @@ export const DetailLayout: FC<TProps> = ({
         <Text family="medium" size={20}>
           {title}
         </Text>
-        <View style={{width: 32}} />
+        {rightIcon ? (
+          <IconButton size={32} onPress={onPressRightIcon}>
+            {rightIcon}
+          </IconButton>
+        ) : (
+          <View style={{width: 32}} />
+        )}
       </View>
       <ScrollView
         {...refreshProps}

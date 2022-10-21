@@ -1,6 +1,6 @@
 import React, {FC} from 'react';
 
-import {Button, Text} from '@/components';
+import {Button, DangerModal, TaskCard, Text, TrashIcon} from '@/components';
 import {RefreshControl, SafeAreaView, ScrollView, View} from 'react-native';
 import {DetailLayout} from '@/layouts';
 
@@ -17,7 +17,9 @@ type TProps = StackScreenProps<ProjectStackParamList, Routes.PROJECT_DETAIL>;
 export const ProjectDetailScreen: FC<TProps> = ({navigation, route}) => {
   const {styles} = useStyles();
 
-  const {detail, ...props} = useData(route.params);
+  const {detail, isOpened, setIsOpened, onRemove, ...props} = useData(
+    route.params,
+  );
 
   const {t} = useTranslation();
 
@@ -25,6 +27,8 @@ export const ProjectDetailScreen: FC<TProps> = ({navigation, route}) => {
     <DetailLayout
       {...props}
       title={detail?.title || ''}
+      rightIcon={<TrashIcon color="danger" size={28} />}
+      onPressRightIcon={() => setIsOpened(true)}
       renderFooter={
         <Button
           variant="round"
@@ -38,6 +42,24 @@ export const ProjectDetailScreen: FC<TProps> = ({navigation, route}) => {
       <View style={styles.description}>
         <Text>{detail?.description}</Text>
       </View>
+
+      {detail?.tasks.map(task => (
+        <TaskCard
+          task={{...task, project: detail}}
+          onPress={() =>
+            navigation.navigate(Routes.TASK_DETAIL, {id: task._id})
+          }
+        />
+      ))}
+
+      <DangerModal
+        visible={isOpened}
+        onClose={() => setIsOpened(false)}
+        onSubmit={onRemove}>
+        <Text size={18} align="center">
+          {t('titles.project_remove')}
+        </Text>
+      </DangerModal>
     </DetailLayout>
   );
 };

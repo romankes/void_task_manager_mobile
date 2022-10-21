@@ -1,3 +1,5 @@
+import {Task} from '../task';
+
 export namespace Project {
   export type Item = {
     _id: string;
@@ -8,6 +10,7 @@ export namespace Project {
 
   export type Detail = Item & {
     spentHors: number;
+    tasks: Task.Item[];
   };
 
   export type ReqFetchItems = {};
@@ -30,4 +33,9 @@ export namespace Project {
     project: Form;
   };
   export type ResUpdateItem = {};
+
+  export type ReqRemoveItem = {
+    id: string;
+  };
+  export type ResRemoveItem = {};
 }

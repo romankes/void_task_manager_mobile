@@ -7,6 +7,8 @@ export enum types {
 
   CREATE_ITEM = 'PROJECT/CREATE_ITEM',
   UPDATE_ITEM = 'PROJECT/UPDATE_ITEM',
+
+  REMOVE_ITEM = 'PROJECT/REMOVE_ITEM',
 }
 
 export type ProjectState = {
@@ -37,8 +39,14 @@ export type UpdateItemAsync = App.BaseAction<
   Project.ReqUpdateItem
 >;
 
+export type RemoveItemAsync = App.BaseAction<
+  typeof types.REMOVE_ITEM,
+  Project.ReqRemoveItem
+>;
+
 export type ProjectActionTypes =
   | FetchDetailAsync
   | FetchItemsAsync
   | CreateItemAsync
-  | UpdateItemAsync;
+  | UpdateItemAsync
+  | RemoveItemAsync;

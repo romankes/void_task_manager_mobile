@@ -1,6 +1,6 @@
 import {Project, projectActions, projectSelectors} from '@/bus/project';
 import {useFetch} from '@/hooks';
-import {useMemo} from 'react';
+import {useCallback, useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 type TArgs = {
@@ -12,7 +12,7 @@ export const useData = ({id}: TArgs) => {
 
   const detail = useSelector(projectSelectors.getDetail);
 
-  console.log(detail);
+  const [isOpened, setIsOpened] = useState(false);
 
   const params: Project.ReqFetchDetail = useMemo(() => ({id}), [id]);
 
@@ -23,5 +23,20 @@ export const useData = ({id}: TArgs) => {
     params,
   });
 
-  return {isLoading, onRefresh, refreshing, detail};
+  const onRemove = useCallback(() => {
+    if (detail) {
+      dispatch(projectActions.removeItemAsync({id: detail._id}));
+    }
+    setIsOpened(false);
+  }, [detail]);
+
+  return {
+    isLoading,
+    onRefresh,
+    refreshing,
+    detail,
+    onRemove,
+    setIsOpened,
+    isOpened,
+  };
 };

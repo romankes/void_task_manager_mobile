@@ -3,6 +3,7 @@ import {
   ProjectDetailScreen,
   ProjectFormScreen,
   ProjectListScreen,
+  TaskDetailScreen,
 } from '@/screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
@@ -11,6 +12,7 @@ import {Routes} from './Routes';
 export type ProjectStackParamList = {
   [Routes.PROJECT_LIST]: undefined;
   [Routes.PROJECT_DETAIL]: {id: string};
+  [Routes.TASK_DETAIL]: {id: string};
   [Routes.PROJECT_FORM]: {type?: 'update' | 'create'};
 };
 
@@ -30,6 +32,10 @@ export const ProjectNavigator = () => {
       <ProjectStack.Screen
         name={Routes.PROJECT_FORM}
         component={ProjectFormScreen}
+      />
+      <ProjectStack.Screen
+        name={Routes.TASK_DETAIL}
+        component={TaskDetailScreen}
       />
     </ProjectStack.Navigator>
   );

@@ -10,6 +10,7 @@ export type Icon = {
   default: ColorValue;
   danger: ColorValue;
   light: ColorValue;
+  action: ColorValue;
 };
 export type Text = {
   default: ColorValue;

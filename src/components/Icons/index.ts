@@ -5,3 +5,4 @@ export * from './UserIcon';
 export * from './TrashIcon';
 export * from './TimerIcons';
 export * from './CloseIcon';
+export * from './TabIcons';

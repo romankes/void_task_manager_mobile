@@ -38,6 +38,17 @@ const slice = createSlice({
       state: ProjectState,
       action: PayloadAction<Project.ResUpdateItem>,
     ) => {},
+
+    removeItem: (
+      state: ProjectState,
+      action: PayloadAction<Project.ReqRemoveItem>,
+    ) => {
+      state.items = state.items.filter(({_id}) => _id !== action.payload.id);
+
+      if (state.detail?._id === action.payload.id) {
+        state.detail = null;
+      }
+    },
   },
 });
 
@@ -60,6 +71,11 @@ export const projectActions = {
   }),
   updateItemAsync: (payload: Project.ReqUpdateItem): ProjectActionTypes => ({
     type: types.UPDATE_ITEM,
+    payload,
+  }),
+
+  removeItemAsync: (payload: Project.ReqRemoveItem): ProjectActionTypes => ({
+    type: types.REMOVE_ITEM,
     payload,
   }),
 };

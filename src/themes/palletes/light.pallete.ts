@@ -19,6 +19,7 @@ const pallete: Pallete = {
     default: '#171B16',
     danger: '#D63333',
     light: '#FCFAFF',
+    action: '#f6d41f',
   },
   button: {
     background: {
