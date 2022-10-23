@@ -16,7 +16,7 @@ export const useStyles = () => {
           justifyContent: 'center',
           alignItems: 'center',
 
-          backgroundColor: pallete.background.outline,
+          backgroundColor: pallete.background.overlay,
         },
         content: {
           backgroundColor: pallete.background.default,

@@ -4,3 +4,4 @@ export * from './Icons';
 export * from './Modals';
 
 export * from './Timer';
+export * from './ImagePicker';

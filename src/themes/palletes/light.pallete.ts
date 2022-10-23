@@ -4,7 +4,8 @@ const pallete: Pallete = {
   background: {
     default: '#FCFAFF',
     dark: '#171B16',
-    outline: '#171B1690',
+    overlay: '#171B1690',
+    gray: '#E3E3E3',
   },
   text: {
     default: '#171B16',

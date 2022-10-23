@@ -1,4 +1,8 @@
 {
+  "locales": {
+    "ru": "Русский",
+    "ua": "Український"
+  },
   "tabs": {
     "project": "Проектки",
     "task": "Задачі",
@@ -71,16 +75,30 @@
   "project_form": {
     "title": "проекта"
   },
+  "project_list": {
+    "title": "Список проектів"
+  },
+  "task_list": {
+    "title": "Список задач"
+  },
   "modals": {
     "danger": {
       "yes": "Так",
       "not": "Закрити"
     }
   },
+  "user_update": {
+    "title": "профіля"
+  },
   "errors": {
     "not_found": "Ресурс не знайдено",
     "bad_params": "Не коректні параметри",
     "missing_params": "Не усі поля заповнені",
     "internal_error": "Внутрішня помилка серва"
+  },
+
+  "image_picker": {
+    "gallery": "Відкрити галерею",
+    "camera": "Зробити фото"
   }
 }

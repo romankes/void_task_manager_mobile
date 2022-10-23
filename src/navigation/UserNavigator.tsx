@@ -1,4 +1,4 @@
-import {EmptyScreen, UserDetailScreen} from '@/screens';
+import {EmptyScreen, UserDetailScreen, UserUpdateScreen} from '@/screens';
 import {createStackNavigator} from '@react-navigation/stack';
 import React from 'react';
 import {Routes} from './Routes';
@@ -17,7 +17,10 @@ export const UserNavigator = () => {
         name={Routes.USER_DETAIL}
         component={UserDetailScreen}
       />
-      <UserStack.Screen name={Routes.USER_UPDATE} component={EmptyScreen} />
+      <UserStack.Screen
+        name={Routes.USER_UPDATE}
+        component={UserUpdateScreen}
+      />
     </UserStack.Navigator>
   );
 };

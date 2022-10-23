@@ -4,12 +4,12 @@ import {SagaIterator} from 'redux-saga';
 import {all, call, put} from 'redux-saga/effects';
 import {apiUser} from '../../api';
 import {User} from '../../namespace';
-import {UpdateDetailAsync} from '../../types';
+import {UpdateItemAsync} from '../../types';
 
-export function* updateDetail(action: UpdateDetailAsync): SagaIterator {
+export function* updateItem(action: UpdateItemAsync): SagaIterator {
   try {
     const response: AxiosResponse<User.Detail> = yield call(
-      apiUser.updateDetail,
+      apiUser.updateItem,
       action.payload,
     );
 

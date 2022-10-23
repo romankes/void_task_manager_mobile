@@ -8,7 +8,8 @@ export namespace Ui {
     | 'project'
     | 'project_action'
     | 'task'
-    | 'task_action';
+    | 'task_action'
+    | 'language';
 
   export type Loader = {
     name: FormName;

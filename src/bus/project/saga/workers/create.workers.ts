@@ -6,6 +6,7 @@ import {apiProject} from '../../api';
 import {AxiosResponse} from 'axios';
 import {Project} from '../../namespace';
 import {projectActions} from '../../slice';
+import {userActions} from '@/bus/user';
 
 export function* createItem(action: CreateItemAsync): SagaIterator {
   try {
@@ -17,7 +18,10 @@ export function* createItem(action: CreateItemAsync): SagaIterator {
     );
 
     if (response.data) {
-      yield put(projectActions.createItem(response.data));
+      yield all([
+        put(projectActions.createItem(response.data)),
+        put(userActions.updateDetail({hasProjects: true})),
+      ]);
     }
   } catch (e) {
     console.log(`error create project item worker ${e}`);

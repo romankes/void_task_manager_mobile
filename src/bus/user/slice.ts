@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 
-import {UserState, UserActionTypes, types, UpdateDetailAsync} from './types';
+import {UserState, UserActionTypes, types, UpdateItemAsync} from './types';
 import {User} from './namespace';
 
 const initialState: UserState = {
@@ -18,6 +18,13 @@ const slice = createSlice({
     clearDetail: (state: UserState) => {
       state.detail = null;
     },
+
+    updateDetail: (
+      state: UserState,
+      action: PayloadAction<User.UpdatePayload>,
+    ) => {
+      state.detail = state.detail ? {...state.detail, ...action.payload} : null;
+    },
   },
 });
 
@@ -25,13 +32,18 @@ export default slice.reducer;
 
 export const userActions = {
   ...slice.actions,
-  updateDetailAsync: (payload: User.ReqUpdateDetail): UpdateDetailAsync => ({
-    type: types.UPDATE_DETAIL,
+  updateItemAsync: (payload: User.ReqUpdateDetail): UpdateItemAsync => ({
+    type: types.UPDATE_ITEM,
     payload,
   }),
 
   fetchDetailAsync: (): UserActionTypes => ({
     type: types.FETCH_DETAIL,
+    payload: {},
+  }),
+
+  removeItemAsync: (): UserActionTypes => ({
+    type: types.REMOVE_ITEM,
     payload: {},
   }),
 };

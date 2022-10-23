@@ -25,8 +25,6 @@ export const TaskFormScreen: FC<TProps> = ({navigation, route}) => {
 
   const {t} = useTranslation();
 
-  console.log(route.params);
-
   return (
     <DetailLayout
       onBack={navigation.goBack}

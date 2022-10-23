@@ -22,5 +22,10 @@ export const appActions = {
   ...slice.actions,
   bootstrapAsync: (): AppActionsTypes => ({
     type: types.BOOTSTRAP,
+    payload: {},
+  }),
+  updateLanguageAsync: (payload: App.UpdateLanguageAsync): AppActionsTypes => ({
+    type: types.UPDATE_LANGUAGE,
+    payload,
   }),
 };

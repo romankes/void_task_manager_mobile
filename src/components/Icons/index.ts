@@ -6,3 +6,5 @@ export * from './TrashIcon';
 export * from './TimerIcons';
 export * from './CloseIcon';
 export * from './TabIcons';
+export * from './PickerIcons';
+export * from './PlusIcon';

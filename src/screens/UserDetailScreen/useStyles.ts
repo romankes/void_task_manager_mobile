@@ -16,6 +16,11 @@ export const useStyles = () => {
         },
         content: {
           flex: 1,
+
+          paddingHorizontal: 16,
+          paddingVertical: 24,
+
+          justifyContent: 'space-between',
         },
         header: {
           height: 148,

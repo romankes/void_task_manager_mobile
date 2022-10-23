@@ -1,8 +1,9 @@
+import {App} from '../app';
+
 export namespace User {
   export type Item = {
     email: string;
-    // avatar: string;
-    name: string;
+    avatar: App.APIImage | null;
     _id: string;
     username: string;
     hasProjects: boolean;
@@ -12,6 +13,15 @@ export namespace User {
 
   export type ResFetchDetail = Detail;
 
-  export type ReqUpdateDetail = {};
+  export type ReqUpdateDetail = {
+    username: string;
+    avatar: App.NewAsset | null;
+  };
   export type ResUpdateDetail = {};
+
+  export type ResRemoveItem = {};
+
+  export type UpdatePayload = {
+    hasProjects?: boolean;
+  };
 }

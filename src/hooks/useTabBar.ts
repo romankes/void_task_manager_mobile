@@ -5,6 +5,7 @@ import {useMemo, useState} from 'react';
 const HIDDEN_ROUTES: Routes[] = [
   Routes.PROJECT_DETAIL,
   Routes.USER_DETAIL,
+  Routes.USER_UPDATE,
   Routes.TASK_FORM,
   Routes.TASK_DETAIL,
   Routes.PROJECT_FORM,

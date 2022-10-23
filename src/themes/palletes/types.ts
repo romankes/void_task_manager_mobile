@@ -3,7 +3,8 @@ import {ColorValue} from 'react-native';
 export type Background = {
   default: ColorValue;
   dark: ColorValue;
-  outline: ColorValue;
+  overlay: ColorValue;
+  gray: ColorValue;
 };
 
 export type Icon = {

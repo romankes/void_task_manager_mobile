@@ -9,13 +9,9 @@ import {authActions} from '@/bus/auth';
 
 export function* fetchDetail(): SagaIterator {
   try {
-    console.log('call');
-
     const response: AxiosResponse<User.ResFetchDetail> = yield call(
       apiUser.fetchDetail,
     );
-
-    console.log(response.data);
 
     if (response.data) {
       yield all([

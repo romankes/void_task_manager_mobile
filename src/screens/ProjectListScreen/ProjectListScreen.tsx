@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 
-import {Button, Loader, ProjectCard} from '@/components';
-import {RefreshControl, SafeAreaView, View} from 'react-native';
+import {Loader, ProjectCard} from '@/components';
+import {RefreshControl} from 'react-native';
 
 import FlatList from 'react-native-draggable-flatlist';
 
@@ -11,6 +11,8 @@ import {useStyles} from './useStyles';
 import {Routes} from '@/navigation';
 import {ProjectStackParamList} from '@/navigation/ProjectNavigator';
 import {StackScreenProps} from '@react-navigation/stack';
+import {ListLayout} from '@/layouts';
+import {useTranslation} from 'react-i18next';
 
 type TProps = StackScreenProps<ProjectStackParamList, Routes.PROJECT_LIST>;
 
@@ -20,8 +22,14 @@ export const ProjectListScreen: FC<TProps> = ({navigation}) => {
   const {isLoading, onRefresh, projects, refreshing, onUpdatePriority} =
     useData();
 
+  const {t} = useTranslation();
+
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <ListLayout
+      title={t('project_list.title')}
+      onCreate={() =>
+        navigation.navigate(Routes.PROJECT_FORM, {type: 'create'})
+      }>
       <FlatList
         containerStyle={[styles.content]}
         showsVerticalScrollIndicator={false}
@@ -42,15 +50,6 @@ export const ProjectListScreen: FC<TProps> = ({navigation}) => {
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
       />
-
-      <View style={[styles.footer, styles.container]}>
-        <Button
-          onPress={() =>
-            navigation.navigate(Routes.PROJECT_FORM, {type: 'create'})
-          }>
-          Create
-        </Button>
-      </View>
-    </SafeAreaView>
+    </ListLayout>
   );
 };

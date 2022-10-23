@@ -1,11 +1,9 @@
 import {useTheme} from '@/hooks';
 import {useMemo} from 'react';
-import {StyleSheet, useWindowDimensions} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 export const useStyles = () => {
   const {pallete} = useTheme();
-
-  const {width} = useWindowDimensions();
 
   const styles = useMemo(
     () =>
@@ -24,9 +22,11 @@ export const useStyles = () => {
           justifyContent: 'space-between',
 
           marginVertical: 4,
+
+          marginHorizontal: -16,
         },
         button: {
-          width: width * 0.33 - 16,
+          flex: 0.32,
         },
         footer: {
           paddingVertical: 12,

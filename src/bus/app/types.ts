@@ -1,5 +1,9 @@
+import {App} from './namespace';
+
 export enum types {
   BOOTSTRAP = 'APP/BOOTSTRAP',
+
+  UPDATE_LANGUAGE = 'APP/UPDATE_LANGUAGE',
 }
 
 export type AppState = {
@@ -8,8 +12,11 @@ export type AppState = {
 
 //ASYNC
 
-export type BootstrapAsync = {
-  type: typeof types.BOOTSTRAP;
-};
+export type BootstrapAsync = App.BaseAction<typeof types.BOOTSTRAP>;
 
-export type AppActionsTypes = BootstrapAsync;
+export type UpdateLanguageAsync = App.BaseAction<
+  typeof types.UPDATE_LANGUAGE,
+  App.UpdateLanguageAsync
+>;
+
+export type AppActionsTypes = BootstrapAsync | UpdateLanguageAsync;

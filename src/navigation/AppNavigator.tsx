@@ -14,6 +14,8 @@ import {navigationRef} from './RootNavigation';
 import {useTheme} from '@/hooks';
 import {userSelectors} from '@/bus/user';
 import {ProjectFormScreen} from '@/screens';
+import {uiSelectors} from '@/bus/ui';
+import {Loader} from '@/components';
 
 export type AppStackParamList = {
   [Routes.AUTH_NAVIGATOR]: undefined;
@@ -29,6 +31,8 @@ export const AppNavigator: FC = () => {
   const logged = useSelector(authSelectors.getLogged);
   const initialized = useSelector(appSelectors.getInitialized);
   const user = useSelector(userSelectors.getDetail);
+
+  const isLoading = useSelector(uiSelectors.getLoading('language'));
 
   const {pallete} = useTheme();
 
@@ -56,27 +60,31 @@ export const AppNavigator: FC = () => {
           background: pallete.background.default as string,
         },
       }}>
-      <AppStack.Navigator
-        screenOptions={{
-          headerShown: false,
-        }}>
-        {!logged ? (
-          <AppStack.Screen
-            name={Routes.AUTH_NAVIGATOR}
-            component={AuthNavigator}
-          />
-        ) : user?.hasProjects ? (
-          <AppStack.Screen
-            name={Routes.TABS_NAVIGATOR}
-            component={TabNavigator}
-          />
-        ) : (
-          <AppStack.Screen
-            name={Routes.PROJECT_FORM}
-            component={ProjectFormScreen}
-          />
-        )}
-      </AppStack.Navigator>
+      {isLoading ? (
+        <Loader height={200} />
+      ) : (
+        <AppStack.Navigator
+          screenOptions={{
+            headerShown: false,
+          }}>
+          {!logged ? (
+            <AppStack.Screen
+              name={Routes.AUTH_NAVIGATOR}
+              component={AuthNavigator}
+            />
+          ) : user?.hasProjects ? (
+            <AppStack.Screen
+              name={Routes.TABS_NAVIGATOR}
+              component={TabNavigator}
+            />
+          ) : (
+            <AppStack.Screen
+              name={Routes.PROJECT_FORM}
+              component={ProjectFormScreen}
+            />
+          )}
+        </AppStack.Navigator>
+      )}
     </NavigationContainer>
   );
 };

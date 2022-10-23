@@ -8,9 +8,6 @@ export const useStyles = () => {
   const styles = useMemo(
     () =>
       StyleSheet.create({
-        wrapper: {
-          height: '100%',
-        },
         content: {
           flex: 1,
         },

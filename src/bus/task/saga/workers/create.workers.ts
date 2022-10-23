@@ -14,8 +14,6 @@ export function* createItem(action: CreateItemAsync): SagaIterator {
       apiTask.createItem,
       action.payload,
     );
-
-    console.log(response.data);
   } catch (e) {
     console.log(`error create task item worker ${e}`);
   } finally {

@@ -1,5 +1,10 @@
-import axios from '@/services/axios';
 import AsyncStorage from '@react-native-community/async-storage';
-import type {AxiosPromise} from 'axios';
+import {App} from '.';
 
-export const apiApp = new (class Api {})();
+export const apiApp = new (class Api {
+  async updateLanguage({language}: App.UpdateLanguageAsync): Promise<boolean> {
+    await AsyncStorage.setItem('LANGUAGE', language);
+
+    return true;
+  }
+})();

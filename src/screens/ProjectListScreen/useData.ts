@@ -11,8 +11,6 @@ export const useData = () => {
 
   const [projectsData, setProjectsData] = useState(projects);
 
-  console.log(projects);
-
   useEffect(() => {
     setProjectsData(projects);
   }, [projects]);
@@ -33,7 +31,6 @@ export const useData = () => {
 
   const onUpdatePriority = useCallback(
     ({data, from, to}: DragEndParams<Project.Item>) => {
-      console.log(data.length, from, to);
       //TODO: update
       setProjectsData(data);
     },

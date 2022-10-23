@@ -9,3 +9,4 @@ export * from './TaskListScreen';
 export * from './UserDetailScreen';
 export * from './TaskFormScreen';
 export * from './TaskDetailScreen';
+export * from './UserUpdateScreen';

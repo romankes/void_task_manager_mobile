@@ -1,2 +1,3 @@
 export {fetchDetail} from './fetch.workers';
-export {updateDetail} from './update.workers';
+export {updateItem} from './update.workers';
+export {removeItem} from './remove.workers';

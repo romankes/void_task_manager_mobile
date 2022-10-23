@@ -1,5 +1,5 @@
 import {Project} from '@/bus/project';
-import {Task, taskSelectors} from '@/bus/task';
+import {Task, taskActions, taskSelectors} from '@/bus/task';
 import {useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -20,7 +20,14 @@ export const useUpdate = () => {
   );
 
   const onUpdate = (data: Task.Form<Project.Item | null>) => {
-    console.log(data);
+    if (detail) {
+      dispatch(
+        taskActions.updateItemAsync({
+          id: detail._id,
+          task: {...data, project: data.project?._id},
+        }),
+      );
+    }
   };
 
   return {initValue, onUpdate};

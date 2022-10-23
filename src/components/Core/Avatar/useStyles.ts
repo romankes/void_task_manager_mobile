@@ -12,7 +12,7 @@ export const useStyles = () => {
           justifyContent: 'center',
           alignItems: 'center',
 
-          backgroundColor: pallete.background.default,
+          backgroundColor: pallete.background.gray,
         },
 
         image: {

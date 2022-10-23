@@ -7,16 +7,32 @@ export const apiUser = new (class Api {
     return axios({url: '/users/current', method: 'get'});
   }
 
-  updateDetail(data: User.ReqUpdateDetail): AxiosPromise<User.ReqUpdateDetail> {
-    const fd = new FormData();
+  updateItem(obj: User.ReqUpdateDetail): AxiosPromise<User.ReqUpdateDetail> {
+    const data = new FormData();
+
+    for (let k in obj) {
+      const key = k as keyof User.ReqUpdateDetail;
+      if (key === 'avatar' && obj[key]?.fromApi) {
+        continue;
+      }
+
+      data.append(`user[${key}]`, obj[key]);
+    }
 
     return axios({
-      url: '/users',
+      url: '/users/current',
       method: 'patch',
       headers: {
         'Content-Type': 'multipart/form-data',
       },
-      data: fd,
+      data,
+    });
+  }
+
+  removeItem(): AxiosPromise<User.ResRemoveItem> {
+    return axios({
+      url: '/users/current',
+      method: 'delete',
     });
   }
 })();
